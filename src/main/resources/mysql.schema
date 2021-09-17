@@ -1,0 +1,23 @@
+create table equipment(
+    id int not null primary key,
+    title varchar(20) not null,
+    price double not null,
+    perhour boolean not null,
+    canbookmultipleunits boolean not null);
+    
+create table booked_equipment(
+    bookingID int not null,
+    equipmentID int not null,
+    title varchar(20) not null,
+    price double not null,
+    units int not null,
+    foreign key (bookingID) references booking(bookingid) on delete cascade,
+    foreign key (equipmentID) references equipment(id) on delete no action);
+    
+    insert into equipment values (1, false, true, 11, "wifi");
+    insert into equipment values (2, false, false, 9, "tv");
+
+    insert into food values (1, 5, "tea");
+    insert into food values (2, 10, "cookies");
+    
+    
